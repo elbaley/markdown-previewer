@@ -1,13 +1,23 @@
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { selectMarkdown, setMdInput } from "../features/markdown/markdownSlice";
 
 const MarkdownEditor = () => {
+  const dispatch = useDispatch();
+  const markdown = useSelector(selectMarkdown);
   return (
     <Wrapper>
       <div className='header'>
         <span className='title'>Markdown</span>
       </div>
       <div className='text'>
-        <textarea className='text-area'></textarea>
+        <textarea
+          onChange={(e) => {
+            dispatch(setMdInput({ input: e.target.value }));
+          }}
+          value={markdown.mdInput}
+          className='text-area'
+        ></textarea>
       </div>
     </Wrapper>
   );
@@ -36,6 +46,7 @@ const Wrapper = styled.section`
   }
 
   .text-area {
+    font-size: 1rem;
     background: #1d1f20;
     color: white;
     width: 100%;

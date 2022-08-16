@@ -1,9 +1,7 @@
-import { useSelector } from "react-redux";
 import styled from "styled-components";
 import MarkdownEditor from "./components/MarkdownEditor";
 import Navbar from "./components/Navbar";
 import Preview from "./components/Preview";
-import { selectMarkdown } from "./features/markdown/markdownSlice";
 
 function App() {
   return (

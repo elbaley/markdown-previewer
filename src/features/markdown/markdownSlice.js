@@ -2,33 +2,22 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: 0,
-  mdInput: "",
-  mdHtmlOutput:
-    "<p>Turkey pork beef sausage prosciutto meatloaf doner sirloin swine strip steak meatball picanha.  Porchetta leberkas meatloaf chicken kevin tri-tip jowl pork ham hock rump cow hamburger short loin spare ribs pork loin.  Meatloaf spare ribs venison picanha chislic buffalo ribeye ham strip steak corned beef cupim.  Beef landjaeger ground round venison ball tip t-bone.  Turkey bresaola kevin ham hock chuck tongue turducken ball tip.  Brisket chicken leberkas bacon flank ground round ball tip.</p>\n",
+  mdInput:
+    '# H1 Header\n\n![ImageExample](https://patika-prod.s3-eu-central-1.amazonaws.com/userFiles/elbaley/profilePicture)\n\nLorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, laborum?\n\n2nd ipsum dolor sit amet consectetur adipisicing elit. Fuga soluta obcaecati voluptatum nobis officia voluptatem *repudiandae* magni maxime, **laudantium** `voluptatibus` sequi, sit quas illo omnis.\n\n  * list item\n  * another item\n  * last item\n\nNote that --- not considering the asterisk --- the actual text\ncontent starts at 4-columns in.\n\n> Some quote...\n\n> Rump pork ground round turkey ribeye turducken ham hock\n\n> t-bone chicken hamburger.\n\n\n## H2 Header\nExample of numbered list:\n\n 1. first item\n 2. second item\n 3. third item\n\nCode snippet example:\n\n```javascript\nconst PI = 3.14;\nalert("Hello World!")\n```\n\n\n### H3 header \n\nNow a nested list:\n\n 1. Main item\n\n      * sub-item\n      * sub-item\n      * sub-item\n\n 2. Another item\n\n 3. Last item\n\n\n\nA link example: [my github](https://github.com/elbaley), \n\n\n',
 };
 
 export const markdownSlice = createSlice({
   name: "markdown",
   initialState,
   reducers: {
-    increment: (state) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      state.value += 1;
-    },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+    setMdInput: (state, action) => {
+      state.mdInput = action.payload.input;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } =
+export const { increment, decrement, incrementByAmount, setMdInput } =
   markdownSlice.actions;
 
 // Selector
